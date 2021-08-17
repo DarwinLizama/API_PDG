@@ -14,6 +14,8 @@ const helmet = require('helmet');
 
 // ----- Rama fixture categorias ---------
 
+// Esto es una prueba
+
 
 //Verificar ambiente de trabajo y puerto
 const PORT=process.env.PORT || 3000
