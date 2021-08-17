@@ -12,7 +12,7 @@ const helmet = require('helmet');
 
 
 
-// ----- Rama main ---------
+// ----- Rama fixture categorias ---------
 
 
 //Verificar ambiente de trabajo y puerto
