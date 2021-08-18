@@ -27,15 +27,22 @@ async function NewCategoria(categoria) {
 }
 
 async function UpdateCategoria(id, nombre){
+    let data = await categorias.updateOne({id:id}, {$set:{nombre:nombre}});
+    console.log(data);
+    return data;
+}
+/* async function UpdateCategoria(id, nombre){
     const encontrada = await GetCategoria(id);
     if (encontrada) {
-       
-        let data = await categorias.UpdateOne({id:id}, {$set:{nombre:categorias.nombre}});
+       console.log("registro encontrado");
+       console.log(encontrada);
+        let data = await categorias.updateOne({id:id}, {$set:{nombre:nombre}});
+        console.log(data);
         return data;
     }else {
         console.log("No encontro ningun registro");
     }  
-}
+} */
 
 async function DeleteCategoria(id){
     let data = await categorias.deleteOne({id});

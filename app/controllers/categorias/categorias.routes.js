@@ -40,19 +40,31 @@ async function getCategoria(req, res) {
         res.send("Error en la busqueda del Categoria!!");
     }
 }
-
-async function updateCategoria(req, res) {
-    let id = req.params.id;
-    let categoria = req.body;
-    let respuesta = await UpdateCategoria(id,categoria);
+async function updateCategoria(req, res){
+    try{
+    let id = req.params.id; 
+    let nombre = req.body.nombre;
+    let respuesta = await UpdateCategoria(id,nombre);
     res.send(respuesta);
+}catch(e) {
+    res.send(`error al modificar categoria`)
+}
 }
 
-async function deteteCategoria(req, res){
+/* async function updateCategoria(req, res) {
+    let id = req.params.id;
+    let categoria = req.body;
+    console.log(categoria);
+    let respuesta = await UpdateCategoria(id);
+    console.log(respuesta);
+    res.send(respuesta);
+} */
+
+async function deleteCategoria(req, res){
     try{
         let id = req.params.id;
         let respuesta = await DeleteCategoria(id);
-        res.send(respueta);
+        res.send(respuesta);
     }catch (error){
         res.send (`Error al eliminar la categoria`);
     }
@@ -73,6 +85,7 @@ app.post("/api/categorias/", newCategoria);
 // ], newCategoria);
 //PUT
 app.put("/api/categorias/:id",updateCategoria);
+app.delete("/api/categorias/:id", deleteCategoria);
 
 
 module.exports = app;
