@@ -14,14 +14,14 @@ async function GetCategoria(id) {
 
 
 async function NewCategoria(categoria) {
-    //console.log(`categoria`)
-    const { id, nombre } = categoria;
+    const { id, nombre, estado } = categoria;
     let nuevaCategoria = new categoria({
         id,
-        nombre      
+        nombre,
+        estado     
     })
-    let data = await nuevaCategoria.save();
-    //console.log(data);
+    let data = await nuevaCategoria.save();   
+    console.log(data); 
     return data;
 
 }
@@ -29,7 +29,7 @@ async function NewCategoria(categoria) {
 async function UpdateCategoria(id, nombre){
     const encontrada = await GetCategoria(id);
     if (encontrada) {
-        console.log("entro");
+       
         let data = await categoria.UpdateOne({id:id}, {$set:{nombre:categoria.nombre}});
         return data;
     }else {
@@ -50,7 +50,3 @@ module.exports = {
     DeleteCategoria
 
 }
-
-/* const GetPaises = async ()=>{
-
-} */
