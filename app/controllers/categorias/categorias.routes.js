@@ -62,15 +62,17 @@ async function deteteCategoria(req, res){
 app.get("/api/categorias", getCategorias);
 app.get("/api/categorias/:id", getCategoria);
 //Post
-app.post("/api/categorias/", [
+app.post("/api/categorias/", newCategoria);
+
+// app.post("/api/categorias/", [
     
-    check('id', 'El id es obligatorio').not().isEmpty(),
-    check('nombre', 'El nombre es obligatorio').not().isEmpty(),
-    check('nombre').custom(existeNombreCategoria),
-    validacionesCampos
-], newCategoria);
+//     check('id', 'El id es obligatorio').not().isEmpty(),
+//     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
+//     check('nombre').custom(existeNombreCategoria),
+//     validacionesCampos
+// ], newCategoria);
 //PUT
-app.put("./api/categorias/:id",updateCategoria);
+app.put("/api/categorias/:id",updateCategoria);
 
 
 module.exports = app;

@@ -2,8 +2,8 @@ const Paises = require('../models/categoria')
 
 
 const existeNombreCategoria = async(nombre) => {
-    let pais = await Paises.findOne({ nombre });
-    if (pais) {
+    let categoria = await categoria.findOne({ nombre });
+    if (categoria) {
         throw new Error(`El Nombre ${nombre} ya esta Ingresado`);
     }
 }
