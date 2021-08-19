@@ -51,14 +51,6 @@ async function updateCategoria(req, res){
 }
 }
 
-/* async function updateCategoria(req, res) {
-    let id = req.params.id;
-    let categoria = req.body;
-    console.log(categoria);
-    let respuesta = await UpdateCategoria(id);
-    console.log(respuesta);
-    res.send(respuesta);
-} */
 
 async function deleteCategoria(req, res){
     try{

@@ -31,18 +31,6 @@ async function UpdateCategoria(id, nombre){
     console.log(data);
     return data;
 }
-/* async function UpdateCategoria(id, nombre){
-    const encontrada = await GetCategoria(id);
-    if (encontrada) {
-       console.log("registro encontrado");
-       console.log(encontrada);
-        let data = await categorias.updateOne({id:id}, {$set:{nombre:nombre}});
-        console.log(data);
-        return data;
-    }else {
-        console.log("No encontro ningun registro");
-    }  
-} */
 
 async function DeleteCategoria(id){
     let data = await categorias.deleteOne({id});
