@@ -12,11 +12,7 @@ const helmet = require('helmet');
 
 
 
-<<<<<<< HEAD
-// ----- Rama fixture-usuarios ---------
-=======
 // ----- Rama dev ---------
->>>>>>> 0f0342ac56b12298bb5a1c264a5af5f908d9635d
 
 
 //Verificar ambiente de trabajo y puerto
