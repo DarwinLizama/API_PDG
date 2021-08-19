@@ -29,7 +29,7 @@ const deleteProductos = async(req, res) => {
         let respuesta = await DeleteProducto(producto)
         res.send(respuesta)
     } catch (error) {
-        
+        res.status(500).send("Hubo un error al elimianr el producto!!!")
     }
 }
 
