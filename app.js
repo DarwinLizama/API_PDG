@@ -3,16 +3,14 @@ require('./app/config/config')
 const express = require('express')
 const conectarDB = require('./app/config/db')
 const app = express()
+
 const cors = require('cors')
 const morgan = require('morgan')
 const helmet = require('helmet');
 
 //const mongoose = require('mongoose')
 
-
-
-
-// ----- Rama dev ---------
+// ----- Rama fixture-productos ---------
 
 
 //Verificar ambiente de trabajo y puerto
@@ -25,9 +23,6 @@ conectarDB()
 app.use(cors());
 
 app.use(express.json())
-
-
-//Habilitar para poder usar con el proyecto
 
 //Habilitar morgan
 // app.use(morgan('common'))
