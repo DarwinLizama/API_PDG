@@ -7,15 +7,15 @@ const validaJWT=(req,res,next)=>{
             msg:'no hay teken'
         })
     }
-    try{
-        const payload=jwt.verify(token,process.env.SECRETKEY)
-        console.log(payload)
+    jwt.verify(token,process.env.SECRETKEY,(err,user)=>{
+        if(err){
+            return res.status(403).json({
+                msg:'token inválido'
+            })
+        }
+        req.user=user
         next()
-    }catch(e){
-        return res.status(403).json({
-            msg:'token inválido'
-        })
-    }
+    })
 }
 
 module.exports={validaJWT}

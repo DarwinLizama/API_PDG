@@ -17,8 +17,7 @@ async function createUser(obj){
 }
 async function setUser(obj){
     const {_id,user,email,clave,estado,rol}=obj
-    const ok=await usuarios.updateOne({_id:new ObjectId(_id)},{$set:{user,email,clave,estado,rol}})
-    const data=ok
+    const data=await usuarios.updateOne({_id:new ObjectId(_id)},{$set:{user,email,clave,estado,rol}})
     return data
 }
 async function deleteUser(obj){
@@ -28,7 +27,7 @@ async function deleteUser(obj){
         ?(await getUser(_id))
         :({
             ok:0
-            ,message:'error en la actualización'})
+            ,message:'error en la actualizaciï¿½n'})
     return data
 }
 async function loginUser(login){
@@ -40,9 +39,10 @@ async function loginUser(login){
             mssg:'login incorrecto'
         }
     }
-    const token=await generaJWT(data.user)
+    const token=await generaJWT(data._id,data.user,data.rol)
     return {
         user:data.user,
+        rol:data.rol,
         token
     }
 }

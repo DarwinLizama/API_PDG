@@ -1,13 +1,12 @@
 const jwt=require('jsonwebtoken')
 
-const generaJWT=(user)=>{
+const generaJWT=(_id,user,rol)=>{
     return new Promise((resolve,reject)=>{
-        const payload={user}
+        const payload={_id,user,rol}
         jwt.sign(payload,process.env.SECRETKEY,{
             expiresIn:'2h'
         },(err,token)=>{
             if(err){
-                console.log(err)
                 reject('no se generó token')
             }else{
                 resolve(token)

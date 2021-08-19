@@ -32,11 +32,11 @@ app.use(express.json())
 //Habilitar morgan
 // app.use(morgan('common'))
 
-// app.use(require('./app/routes/routes'))
+app.use(require('./app/routes/routes'))
 
 // app.use(helmet());
 
 app.listen(PORT, () => {
 
-    console.log(`"Servidor en ejecucion en el puerto: ${PORT}!!!!"`);
+    console.log(`"Servidor en ejecucion en el puerto: http://localhost:${PORT} !!!!"`);
 })
