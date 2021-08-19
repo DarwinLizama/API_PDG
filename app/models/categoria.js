@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+// cate
 const categoriasSchema = new Schema({
 
     id: {
