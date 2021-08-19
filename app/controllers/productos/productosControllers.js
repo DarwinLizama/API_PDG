@@ -24,8 +24,14 @@ const NewProductos = async(producto) => {
     return data
 }
 
+const DeleteProducto = async(id) => {
+
+    const productoBorrado = await Producto.findByIdAndUpdate(id, {estado: false}, {new: true})
+    return productoBorrado
+}
 
 module.exports = {
     GetProductos,
-    NewProductos
+    NewProductos,
+    DeleteProducto
 }

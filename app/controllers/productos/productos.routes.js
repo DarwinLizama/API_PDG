@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const { GetProductos, NewProductos } = require('./productosControllers')
+const { GetProductos, NewProductos, DeleteProducto } = require('./productosControllers')
 
 const getProductos = async (req, res) => {
     try {
@@ -19,6 +19,17 @@ const newProductos = async(req, res) =>{
         res.send(respuesta)
     } catch (error) {
         res.status(500).send("Hubo un error al guardar!!!")
+    }
+}
+
+const deleteProductos = async(req, res) => {
+    try {
+        let producto = req.body
+        console.log();
+        let respuesta = await DeleteProducto(producto)
+        res.send(respuesta)
+    } catch (error) {
+        
     }
 }
 
