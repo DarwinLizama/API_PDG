@@ -18,3 +18,6 @@ usuariosSchema.methods.toJSON=function(){
 }
 
 module.exports=mongoose.model('usuarios',usuariosSchema,'usuarios')
+
+
+//proveniente de fixtur-usuarios
