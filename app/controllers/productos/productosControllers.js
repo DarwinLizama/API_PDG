@@ -8,6 +8,12 @@ const GetProductos = async() => {
     return data
 }
 
+const GetProducto = async(id) => {
+
+    let data = await Producto.findOne({ id: id })
+    return data
+}
+
 const NewProductos = async(producto) => {
 
     const { id, nombre, precio, idCategoria, estado, descripcion } = producto
@@ -24,14 +30,27 @@ const NewProductos = async(producto) => {
     return data
 }
 
+const ActualizarProducto = async(id, data) => {
+
+    console.log("data en controller", data);    
+   
+    const producto = await Producto.updateOne(id, {$set:{ nombre, descripcion, precio }})
+    console.log("producto controllers", producto);
+    return producto
+
+}
+
 const DeleteProducto = async(id) => {
 
-    const productoBorrado = await Producto.findByIdAndUpdate(id, {estado: false}, {new: true})
+    const productoBorrado = await Producto.updateOne(id, {estado: false}, {new: true})
+    
     return productoBorrado
 }
 
 module.exports = {
     GetProductos,
+    GetProducto,
     NewProductos,
+    ActualizarProducto,
     DeleteProducto
 }
