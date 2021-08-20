@@ -21,7 +21,7 @@ async function getCategorias(req, res) {
 async function newCategoria(req, res) {
     try {
         let categoria = req.body;
-        console.log(req.body);
+        //console.log(req.body);
         let respuesta = await NewCategoria(categoria);
         //console.log(respuesta);
         res.send(respuesta);
@@ -65,6 +65,7 @@ async function deleteCategoria(req, res){
 //Get
 app.get("/api/categorias", getCategorias);
 app.get("/api/categorias/:id", getCategoria);
+
 //Post
 app.post("/api/categorias/", newCategoria);
 
