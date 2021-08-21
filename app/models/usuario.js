@@ -2,11 +2,14 @@ const mongoose=require('mongoose')
 const schema=mongoose.Schema
 
 const usuariosSchema=new schema({
-    user:{type:String,required:[true,'usuario requerido'],unique:[true,'usuario ya registrado{VALUE}']}
-    ,email:{type:String,required:[true,'email requerido'],unique:true}
-    ,clave:{type:String,required:[true,'password requerido']}
+    user:{type:String,required:'usuario requerido',unique:true}
+    ,email:{type:String,required:'email requerido',unique:true}
+    ,clave:{type:String,required:'contraseña requerida'}
     ,estado:{type:Boolean,default:true}
-    ,rol:{type:String,enum:['VENDEDOR','ADMIN']}
+    ,rol:{type:String,enum:{
+        values:['VENDEDOR','ADMIN']
+      , message: 'rol es requerido'
+      }}
 },{
     timestamps:true
     ,versionKey:false
