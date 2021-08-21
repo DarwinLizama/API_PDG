@@ -13,13 +13,16 @@ const ProductoSchema = new Schema({
         unique: true
     },
     precio:{
-        type: Number,
-        required: true,
+        type: Number,        
         default: 0
+    },
+    idCategoria: {
+        type: Number
     },
     estado: {
         type: Boolean,
-        default: false
+        default: true,
+        required: true
     },
     img: { 
         type: String 
