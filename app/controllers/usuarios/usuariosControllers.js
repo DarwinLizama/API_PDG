@@ -12,6 +12,7 @@ async function getUser(_id){
 }
 async function createUser(obj){
     const {user,email,clave,estado,rol}=obj
+    console.log(obj);
     const data=await usuarios.create({user,email,clave,estado,rol})
     return data
 }
@@ -46,3 +47,4 @@ async function loginUser(login){
         token
     }
 }
+module.exports={getUsers,getUser,createUser,setUser,deleteUser,loginUser}

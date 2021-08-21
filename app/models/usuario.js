@@ -17,4 +17,4 @@ usuariosSchema.methods.toJSON=function(){
     return usuario;
 }
 
-module.exports=mongoose.model('usuarios',usuariosSchema,'usuarios')
+module.exports=mongoose.model('usuarios',usuariosSchema,'usuarios');

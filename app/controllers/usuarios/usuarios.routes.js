@@ -34,6 +34,7 @@ app.get('/usuarios/:_id',validaJWT,async(req,res)=>{
     }
 })
 app.post('/usuarios',validaJWT,async(req,res)=>{
+   
     const {rol}=req.user
     if(rol!='ADMIN'){
         return res.status(403).json({
