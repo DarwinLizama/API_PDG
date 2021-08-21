@@ -1,4 +1,5 @@
 const Producto = require('../models/producto')
+const categorias = require('../models/categoria')
 
 const ExisteProductoPorId = async( id ) => {
     
@@ -10,15 +11,33 @@ const ExisteProductoPorId = async( id ) => {
     
 }
 
-const ExisteNombreProducto = async(nombre = '') => {
+const ExisteNombreProducto = async(req, res, next) => {
 
-    const existeNombre = await Producto.findOne({ nombre });
-    if (existeNombre) {
-        throw new Error(`El Nombre ${nombre} ya esta Ingresado`);
+    const { ...body } = req.body
+
+    const productoDB = await Producto.findOne({ nombre: body.nombre });
+
+    if ( productoDB ) {
+        return res.status(400).json({
+            msg: `El producto ${ productoDB.nombre }, ya existe`
+        });
     }
+    next()
+
+}
+
+const ExisteCategoriaId= async( idCategoria ) => {
+    
+    
+    const existeCategoria = await categorias.findOne({id:idCategoria});
+    if ( !existeCategoria ) {
+        throw new Error(`El id no existe ${ id }`);
+    }
+    
 }
 
 module.exports ={
     ExisteProductoPorId,
-    ExisteNombreProducto
+    ExisteNombreProducto,
+    ExisteCategoriaId
 }
