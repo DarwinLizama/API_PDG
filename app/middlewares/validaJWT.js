@@ -10,7 +10,9 @@ const validaJWT=(req,res,next)=>{
     jwt.verify(token,process.env.SECRETKEY,(err,user)=>{
         if(err){
             return res.status(403).json({
-                msg:'token inválido'
+                status:403,
+                msg:'token inválido',
+                obj:{}
             })
         }
         req.user=user
