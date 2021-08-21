@@ -67,7 +67,7 @@ app.get("/api/categorias", getCategorias);
 app.get("/api/categorias/:id", getCategoria);
 
 //Post
-app.post("/api/categorias/", newCategoria);
+app.post("/api/categorias/", [], newCategoria);
 
 // app.post("/api/categorias/", [
     
