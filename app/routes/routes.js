@@ -7,5 +7,4 @@ app.use(require('../controllers/categorias/categorias.routes'))
 app.use(require('../controllers/productos/productos.routes'))
 
 
-
 module.exports = app

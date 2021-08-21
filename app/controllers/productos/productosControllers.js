@@ -8,6 +8,17 @@ const GetProductos = async() => {
     return data
 }
 
+const GetProducto = async(id) => {
+
+    let data = await Producto.findOne({ id: id })
+    return data
+}
+
+const GetProductoNombre = async(nom) => {
+
+    let data = await Producto.findOne({ nombre:nom })
+    return data
+}
 const NewProductos = async(producto) => {
 
     const { id, nombre, precio, idCategoria, estado, descripcion } = producto
@@ -18,20 +29,42 @@ const NewProductos = async(producto) => {
         precio,
         idCategoria,
         estado,
-        descripcion
+        descripcion,
+        img: null
     })
     let data = await nuevoProducto.save()
     return data
 }
 
+const ActualizarProducto = async(productoId, data) => {
+     
+    const producto = await Producto.findByIdAndUpdate({ _id:productoId }, data, { new: true })
+    
+    return producto
+    
+}
+
+const ActualizarProductoNombre = async(productoNombre, data) => {
+     
+    const producto = await Producto.findByIdAndUpdate(productoNombre, data, { new: true })
+    
+    return producto
+    
+}
+
 const DeleteProducto = async(id) => {
 
-    const productoBorrado = await Producto.findByIdAndUpdate(id, {estado: false}, {new: true})
+    const productoBorrado = await Producto.updateOne(id, {estado: false}, {new: true})
+    
     return productoBorrado
 }
 
 module.exports = {
     GetProductos,
+    GetProducto,
+    GetProductoNombre,
     NewProductos,
+    ActualizarProducto,
+    ActualizarProductoNombre,
     DeleteProducto
 }
