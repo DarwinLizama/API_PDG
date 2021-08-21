@@ -168,7 +168,7 @@ app.delete('/usuarios'
 })
 /**cuenta del usuario**/
 app.post('/login',async(req,res)=>{
-    let login=req.body
+    let login=req.body    
     let result
     try{
         result=await validaLogin(login)

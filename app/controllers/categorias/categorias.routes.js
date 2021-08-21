@@ -5,7 +5,7 @@ const { GetCategorias, NewCategoria, GetCategoria, UpdateCategoria, DeleteCatego
 const { check } = require('express-validator');
 const { validacionesCampos } = require('../../middlewares/validaciones');
 const { existeNombreCategoria } = require('../../helpers/validacionesDb')
-//const { validaJWT } = require('../../middlewares/validaJWT')
+const { validaJWT } = require('../../middlewares')
 
 
 async function getCategorias(req, res) {
@@ -66,7 +66,7 @@ async function deleteCategoria(req, res){
 app.get("/api/categorias", getCategorias);
 app.get("/api/categorias/:id", getCategoria);
 //Post
-app.post("/api/categorias/", newCategoria);
+app.post("/api/categorias/", validaJWT, newCategoria);
 
 // app.post("/api/categorias/", [
     
@@ -76,8 +76,8 @@ app.post("/api/categorias/", newCategoria);
 //     validacionesCampos
 // ], newCategoria);
 //PUT
-app.put("/api/categorias/:id",updateCategoria);
-app.delete("/api/categorias/:id", deleteCategoria);
+app.put("/api/categorias/:id", validaJWT, updateCategoria);
+app.delete("/api/categorias/:id", validaJWT,  deleteCategoria);
 
 
 module.exports = app;

@@ -78,7 +78,7 @@ const validaDelete=async (obj)=>{
     return null
 }
 const validaLogin=async (login)=>{
-    let errors=[]
+    let errors=[]    
     const {user,clave}=login
     if(!user){
         errors.push({path:'user',msg:`usuario requerido`})

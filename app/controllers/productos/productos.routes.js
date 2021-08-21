@@ -106,12 +106,11 @@ app.post('/api/productos', [
 app.put('/api/productos/:id', [
     validaJWT,
     check('id').custom(ExisteProductoPorId),
-    check('idCategoria').custom(ExisteCategoriaId),
     ExisteNombreProducto,
     validarCampos
 ], actualizarProductos)
 
-app.put('/api/productos/:nombre', actualizarProductosNombre)
+app.put('/api/productos/:nombre', validaJWT, actualizarProductosNombre)
 
 app.delete('/api/productos/:id',
     validaJWT,
