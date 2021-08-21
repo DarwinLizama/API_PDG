@@ -1,7 +1,7 @@
 const express = require('express')
 const { check } = require('express-validator')
-const { ExisteProductoPorId, ExisteNombreProducto } = require('../../helpers/validaProducto')
-const { validarCampos } = require('../../middlewares/validarCampos')
+const { ExisteProductoPorId, ExisteNombreProducto, ExisteCategoriaId } = require('../../helpers/validaProducto');
+const { validarCampos, validaJWT } = require('../../middlewares');
 const app = express()
 const { GetProductos, NewProductos, DeleteProducto, ActualizarProducto, GetProducto, ActualizarProductoNombre, GetProductoNombre } = require('./productosControllers')
 
@@ -96,19 +96,26 @@ app.get('/api/productos/:id',[
 
 app.get('/api/productos/:nombre', getProductoNombre)
 
-app.post('/api/productos', ExisteNombreProducto, newProductos)
+app.post('/api/productos', [
+    validaJWT,
+    ExisteNombreProducto,
+    check('idCategoria').custom(ExisteCategoriaId),
+    validarCampos
+], newProductos)
 
 app.put('/api/productos/:id', [
-    
+    validaJWT,
     check('id').custom(ExisteProductoPorId),
+    check('idCategoria').custom(ExisteCategoriaId),
     ExisteNombreProducto,
     validarCampos
 ], actualizarProductos)
 
 app.put('/api/productos/:nombre', actualizarProductosNombre)
 
-app.delete('/api/productos/:id',/* [
-    
+app.delete('/api/productos/:id',
+    validaJWT,
+    /* [
     check('id').custom(ExisteProductoPorId),
     validarCampos
 ], */ deleteProductos)

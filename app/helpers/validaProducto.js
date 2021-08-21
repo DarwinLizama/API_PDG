@@ -1,4 +1,5 @@
 const Producto = require('../models/producto')
+const categorias = require('../models/categoria')
 
 const ExisteProductoPorId = async( id ) => {
     
@@ -25,7 +26,18 @@ const ExisteNombreProducto = async(req, res, next) => {
 
 }
 
+const ExisteCategoriaId= async( idCategoria ) => {
+    
+    
+    const existeCategoria = await categorias.findOne({id:idCategoria});
+    if ( !existeCategoria ) {
+        throw new Error(`El id no existe ${ id }`);
+    }
+    
+}
+
 module.exports ={
     ExisteProductoPorId,
-    ExisteNombreProducto
+    ExisteNombreProducto,
+    ExisteCategoriaId
 }
