@@ -66,9 +66,9 @@ async function deleteCategoria(req, res){
 app.get("/api/categorias", getCategorias);
 app.get("/api/categorias/:id", getCategoria);
 //Post
-app.post("/api/categorias/", validaJWT, newCategoria);
-
-// app.post("/api/categorias/", [
+app.post("/api/categorias/", validaJWT, newCategoria)
+     
+     // app.post("/api/categorias/", [
     
 //     check('id', 'El id es obligatorio').not().isEmpty(),
 //     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
