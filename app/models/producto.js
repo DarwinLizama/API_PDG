@@ -10,7 +10,7 @@ const ProductoSchema = new Schema({
     nombre: {
         type: String,
         required: [true, 'El nombre es obligatorio'],
-        unique: true
+        unique: [true, 'El nombre ya existe']
     },
     precio:{
         type: Number,        

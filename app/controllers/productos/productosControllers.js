@@ -14,6 +14,11 @@ const GetProducto = async(id) => {
     return data
 }
 
+const GetProductoNombre = async(nom) => {
+
+    let data = await Producto.findOne({ nombre:nom })
+    return data
+}
 const NewProductos = async(producto) => {
 
     const { id, nombre, precio, idCategoria, estado, descripcion } = producto
@@ -24,20 +29,27 @@ const NewProductos = async(producto) => {
         precio,
         idCategoria,
         estado,
-        descripcion
+        descripcion,
+        img: null
     })
     let data = await nuevoProducto.save()
     return data
 }
 
-const ActualizarProducto = async(id, data) => {
-
-    console.log("data en controller", data);    
-   
-    const producto = await Producto.updateOne(id, {$set:{ nombre, descripcion, precio }})
-    console.log("producto controllers", producto);
+const ActualizarProducto = async(productoId, data) => {
+     
+    const producto = await Producto.findByIdAndUpdate({ _id:productoId }, data, { new: true })
+    
     return producto
+    
+}
 
+const ActualizarProductoNombre = async(productoNombre, data) => {
+     
+    const producto = await Producto.findByIdAndUpdate(productoNombre, data, { new: true })
+    
+    return producto
+    
 }
 
 const DeleteProducto = async(id) => {
@@ -50,7 +62,9 @@ const DeleteProducto = async(id) => {
 module.exports = {
     GetProductos,
     GetProducto,
+    GetProductoNombre,
     NewProductos,
     ActualizarProducto,
+    ActualizarProductoNombre,
     DeleteProducto
 }
