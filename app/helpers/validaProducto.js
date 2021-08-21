@@ -10,12 +10,19 @@ const ExisteProductoPorId = async( id ) => {
     
 }
 
-const ExisteNombreProducto = async(nombre = '') => {
+const ExisteNombreProducto = async(req, res, next) => {
 
-    const existeNombre = await Producto.findOne({ nombre });
-    if (existeNombre) {
-        throw new Error(`El Nombre ${nombre} ya esta Ingresado`);
+    const { ...body } = req.body
+
+    const productoDB = await Producto.findOne({ nombre: body.nombre });
+
+    if ( productoDB ) {
+        return res.status(400).json({
+            msg: `El producto ${ productoDB.nombre }, ya existe`
+        });
     }
+    next()
+
 }
 
 module.exports ={

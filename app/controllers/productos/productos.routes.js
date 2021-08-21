@@ -96,21 +96,22 @@ app.get('/api/productos/:id',[
 
 app.get('/api/productos/:nombre', getProductoNombre)
 
-app.post('/api/productos', newProductos)
+app.post('/api/productos', ExisteNombreProducto, newProductos)
 
 app.put('/api/productos/:id', [
     
     check('id').custom(ExisteProductoPorId),
+    ExisteNombreProducto,
     validarCampos
 ], actualizarProductos)
 
 app.put('/api/productos/:nombre', actualizarProductosNombre)
 
-app.delete('/api/productos/:id',[
+app.delete('/api/productos/:id',/* [
     
     check('id').custom(ExisteProductoPorId),
     validarCampos
-], deleteProductos)
+], */ deleteProductos)
 
 
 module.exports = app
