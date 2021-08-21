@@ -61,8 +61,8 @@ async function deleteUser(obj){
     }
 }
 async function loginUser(login){
-    const {user,password}=login
-    const data=await usuarios.findOne({user:user,password:password},(err,data)=>{
+    const {user,clave}=login
+    const data=await usuarios.findOne({user:user,clave:clave},(err,data)=>{
         if(err){
             return {
                 status:400,
