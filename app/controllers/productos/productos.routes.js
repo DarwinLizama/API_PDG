@@ -29,7 +29,7 @@ const getProductoNombre = async(req, res) => {
     try {        
         let nom = req.body.nombre
         console.log(nom);
-        let respuesta = await GetProducto(nom)
+        let respuesta = await GetProductoNombre(nom)
         res.send(respuesta)
     } catch (error) {
         res.send("Error en la busqueda del Producto!!")
